@@ -2,15 +2,28 @@
 <html lang="en">
 
 <head>
+    <!-- ==========================================
+                    META INFORMATION
+    =========================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ==========================================
+                    WEBSITE TITLE
+    =========================================== -->
     <title>Mr. Chai</title>
+
+    <!-- ==========================================
+                    CSS FILE
+    =========================================== -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Loading Screen -->
+    <!-- ==========================================
+                    LOADING SCREEN
+    =========================================== -->
     <div id="loader">
         <div class="loader-content">
             <img src="images/logo.png" alt="Mr. Chai Logo">
@@ -19,7 +32,9 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- ==========================================
+                    NAVIGATION BAR
+    =========================================== -->
     <header>
         <nav>
 
@@ -29,18 +44,21 @@
             </div>
 
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="menu.html#milkshakes">Milkshakes</a></li>
+                <li><a href="menu.html#snacks">Snacks</a></li>
+                <li><a href="menu.html#contact">Contact</a></li>
             </ul>
 
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- ==========================================
+                    HERO SECTION
+    =========================================== -->
+    <section id="home" class="hero">
         <div class="hero-content">
             <h1>MR. CHAI</h1>
             <h2>Every Sip Tells a Story</h2>
@@ -49,8 +67,10 @@
         </div>
     </section>
 
-    <!-- Owner Section -->
-    <section class="owner">
+    <!-- ==========================================
+                    OWNER SECTION
+    =========================================== -->
+    <section id="about" class="owner">
 
         <div class="owner-image">
             <img src="images/kb.jpeg" alt="Owner">
@@ -63,24 +83,27 @@
 
             <p>
                 Welcome to Mr. Chai! Our mission is to serve premium-quality tea,
-                delicious milkshakes and tasty snacks in a clean, friendly
+                delicious milkshakes, and tasty snacks in a clean, friendly
                 environment. Every cup is prepared with care to give customers
                 the best experience.
             </p>
 
             <a href="#" class="owner-btn">Know More</a>
         </div>
+        
 
     </section>
 
-    <!-- Special Chai Section -->
+    <!-- ==========================================
+                    SPECIAL CHAI SECTION
+    =========================================== -->
     <section id="menu" class="menu">
 
         <h2 class="section-title">Our Special Chai</h2>
 
         <div class="menu-container">
 
-            <!-- Masala Chai -->
+            <!-- Masala Chai Card -->
             <div class="menu-card">
                 <img src="images/masala.jpg" alt="Masala Chai">
                 <h3>Masala Chai</h3>
@@ -89,7 +112,7 @@
                 <a href="#" class="menu-btn">Order Now</a>
             </div>
 
-            <!-- Ginger Chai -->
+            <!-- Ginger Chai Card -->
             <div class="menu-card">
                 <img src="images/ginger.jpg" alt="Ginger Chai">
                 <h3>Ginger Chai</h3>
@@ -98,7 +121,7 @@
                 <a href="#" class="menu-btn">Order Now</a>
             </div>
 
-            <!-- Elaichi Chai -->
+            <!-- Elaichi Chai Card -->
             <div class="menu-card">
                 <img src="images/elaichi.jpg" alt="Elaichi Chai">
                 <h3>Elaichi Chai</h3>
@@ -111,6 +134,106 @@
 
     </section>
 
+    <!-- ==========================================
+                    MILKSHAKES SECTION
+    =========================================== -->
+    <section id="milkshakes" class="milkshakes">
+
+        <h2 class="section-title">Our Milkshakes</h2>
+
+        <div class="milkshake-container">
+
+            <!-- Mango Milkshake -->
+            <div class="milkshake-card">
+                <img src="images/mangomilkshake.jpg" alt="Mango Milkshake">
+                <h3>Mango Milkshake</h3>
+                <p>Fresh mangoes blended into a creamy delight.</p>
+                <span>₹60</span>
+                <a href="#" class="milkshake-btn">Order Now</a>
+            </div>
+
+            <!-- Chocolate Milkshake -->
+            <div class="milkshake-card">
+                <img src="images/chocolatemilkshake.jpg" alt="Chocolate Milkshake">
+                <h3>Chocolate Milkshake</h3>
+                <p>Rich chocolate blended with chilled milk.</p>
+                <span>₹60</span>
+                <a href="#" class="milkshake-btn">Order Now</a>
+            </div>
+
+            <!-- Banana Milkshake -->
+            <div class="milkshake-card">
+                <img src="images/bananamilkshake.jpg" alt="Banana Milkshake">
+                <h3>Banana Milkshake</h3>
+                <p>Fresh banana blended into a smooth and creamy milkshake.</p>
+                <span>₹50</span>
+                <a href="#" class="milkshake-btn">Order Now</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                    SNACKS SECTION
+    =========================================== -->
+    <section id="snacks" class="snacks">
+
+        <h2 class="section-title">Our Snacks</h2>
+
+        <div class="snack-container">
+
+            <!-- French Fries -->
+            <div class="snack-card">
+                <img src="images/frenchfries.jpg" alt="French Fries">
+                <h3>French Fries</h3>
+                <p>Crispy golden French fries served with tomato ketchup.</p>
+                <span>₹80</span>
+                <a href="#" class="snack-btn">Order Now</a>
+            </div>
+
+            <!-- Veg Sandwich -->
+            <div class="snack-card">
+                <img src="images/sandwich.jpg" alt="Veg Sandwich">
+                <h3>Veg Sandwich</h3>
+                <p>Fresh vegetables with cheese grilled perfectly.</p>
+                <span>₹120</span>
+                <a href="#" class="snack-btn">Order Now</a>
+            </div>
+
+            <!-- Veg Burger -->
+            <div class="snack-card">
+                <img src="images/burger.jpg" alt="Veg Burger">
+                <h3>Veg Burger</h3>
+                <p>Soft bun with crispy patty and fresh vegetables.</p>
+                <span>₹140</span>
+                <a href="#" class="snack-btn">Order Now</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                    CONTACT SECTION
+    =========================================== -->
+    <section id="contact" class="contact">
+
+        <h2 class="section-title">Contact Us</h2>
+
+        <p>📍 Mr. Chai Franchise</p>
+        <p>📞 +91 9398364867</p>
+        <p>📧 mrchaikbchandhu@email.com</p>
+
+    </section>
+<!-- ================= BACK TO TOP ================= -->
+
+<button id="backToTop" title="Back to Top">
+    ↑
+</button>
+    <!-- ==========================================
+                    JAVASCRIPT
+    =========================================== -->
     <script src="script.js"></script>
 
 </body>
