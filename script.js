@@ -55,25 +55,24 @@ if (backToTop) {
 }
 
 /*=========================================
-        NAVIGATION SHADOW
+        NAVIGATION SCROLL
 =========================================*/
 
 const nav = document.querySelector("nav");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    if (window.scrollY > 30) {
+    if(window.scrollY>40){
 
         nav.classList.add("scrolled");
 
-    } else {
+    }else{
 
         nav.classList.remove("scrolled");
 
     }
 
 });
-
 /*=========================================
         FADE IN ANIMATION
 =========================================*/
@@ -107,44 +106,97 @@ if (fadeElements.length > 0) {
 /*=========================================
         PROFESSIONAL LIGHTBOX
 =========================================*/
-
+const spinner = document.querySelector(".loading-spinner");
 const galleryImages = document.querySelectorAll(".gallery-grid img");
 
 const imageModal = document.getElementById("imageModal");
-
 const modalImage = document.getElementById("modalImage");
 
 const closeModal = document.querySelector(".close-modal");
-
 const prevBtn = document.querySelector(".prev-image");
-
 const nextBtn = document.querySelector(".next-image");
 
 let currentImage = 0;
 
-function openModal(index) {
+function openModal(index){
 
     currentImage = index;
 
-    modalImage.src = galleryImages[currentImage].src;
+    const clickedImage = galleryImages[currentImage];
 
-    imageModal.style.display = "flex";
+    const rect = clickedImage.getBoundingClientRect();
 
+    spinner.style.display="block";
+
+modalImage.style.opacity="0";
+
+modalImage.src=clickedImage.src;
+
+modalImage.onload=()=>{
+
+    spinner.style.display="none";
+
+    modalImage.style.opacity="1";
+
+}
+
+    imageModal.classList.add("active");
     document.body.classList.add("modal-open");
 
+    /* Start from clicked image position */
+
+    modalImage.style.transition = "none";
+
+    modalImage.style.left = rect.left + "px";
+    modalImage.style.top = rect.top + "px";
+
+    modalImage.style.width = rect.width + "px";
+    modalImage.style.height = rect.height + "px";
+
+    modalImage.style.transform = "none";
+
+    requestAnimationFrame(()=>{
+
+        modalImage.style.transition = "all .45s ease";
+
+        modalImage.style.left = "50%";
+        modalImage.style.top = "50%";
+
+        modalImage.style.width = "80%";
+        modalImage.style.height = "auto";
+
+        modalImage.style.transform = "translate(-50%,-50%)";
+
+    });
+
 }
 
-function closeLightbox() {
+function closeLightbox(){
 
-    imageModal.style.display = "none";
+    const clickedImage = galleryImages[currentImage];
 
-    document.body.classList.remove("modal-open");
+    const rect = clickedImage.getBoundingClientRect();
+
+    modalImage.style.left = rect.left + "px";
+    modalImage.style.top = rect.top + "px";
+
+    modalImage.style.width = rect.width + "px";
+    modalImage.style.height = rect.height + "px";
+
+    modalImage.style.transform = "none";
+
+    setTimeout(()=>{
+
+        imageModal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+
+    },400);
 
 }
 
-galleryImages.forEach((image, index) => {
+galleryImages.forEach((image,index)=>{
 
-    image.addEventListener("click", () => {
+    image.addEventListener("click",()=>{
 
         openModal(index);
 
@@ -152,15 +204,15 @@ galleryImages.forEach((image, index) => {
 
 });
 
-nextBtn.addEventListener("click", (e) => {
+nextBtn.addEventListener("click",(e)=>{
 
     e.stopPropagation();
 
     currentImage++;
 
-    if (currentImage >= galleryImages.length) {
+    if(currentImage>=galleryImages.length){
 
-        currentImage = 0;
+        currentImage=0;
 
     }
 
@@ -168,15 +220,15 @@ nextBtn.addEventListener("click", (e) => {
 
 });
 
-prevBtn.addEventListener("click", (e) => {
+prevBtn.addEventListener("click",(e)=>{
 
     e.stopPropagation();
 
     currentImage--;
 
-    if (currentImage < 0) {
+    if(currentImage<0){
 
-        currentImage = galleryImages.length - 1;
+        currentImage=galleryImages.length-1;
 
     }
 
@@ -184,11 +236,11 @@ prevBtn.addEventListener("click", (e) => {
 
 });
 
-closeModal.addEventListener("click", closeLightbox);
+closeModal.addEventListener("click",closeLightbox);
 
-imageModal.addEventListener("click", (e) => {
+imageModal.addEventListener("click",(e)=>{
 
-    if (e.target === imageModal) {
+    if(e.target===imageModal){
 
         closeLightbox();
 
@@ -196,28 +248,92 @@ imageModal.addEventListener("click", (e) => {
 
 });
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown",(e)=>{
 
-    if (imageModal.style.display === "flex") {
+    if(!imageModal.classList.contains("active")) return;
 
-        if (e.key === "Escape") {
+    if(e.key==="Escape"){
 
-            closeLightbox();
+        closeLightbox();
 
-        }
+    }
 
-        if (e.key === "ArrowRight") {
+    if(e.key==="ArrowRight"){
 
-            nextBtn.click();
+        nextBtn.click();
 
-        }
+    }
 
-        if (e.key === "ArrowLeft") {
+    if(e.key==="ArrowLeft"){
 
-            prevBtn.click();
-
-        }
+        prevBtn.click();
 
     }
 
 });
+let touchStartX=0;
+
+modalImage.addEventListener("touchstart",(e)=>{
+
+    touchStartX=e.touches[0].clientX;
+
+});
+
+modalImage.addEventListener("touchend",(e)=>{
+
+    const touchEndX=e.changedTouches[0].clientX;
+
+    if(touchStartX-touchEndX>50){
+
+        nextBtn.click();
+
+    }
+
+    if(touchEndX-touchStartX>50){
+
+        prevBtn.click();
+
+    }
+
+});
+/*=========================================
+        MOBILE MENU
+=========================================*/
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if(menuToggle && navLinks){
+
+    menuToggle.addEventListener("click",()=>{
+        const navItems = document.querySelectorAll("#navLinks a");
+
+navItems.forEach(item=>{
+
+    item.addEventListener("click",()=>{
+
+        navLinks.classList.remove("active");
+
+        menuToggle.innerHTML="☰";
+
+    });
+
+});
+
+        navLinks.classList.toggle("active");
+
+        if(navLinks.classList.contains("active")){
+
+            menuToggle.textContent="✕";
+menuToggle.style.transform="rotate(180deg)";
+
+        }else{
+
+            menuToggle.textContent="☰";
+menuToggle.style.transform="rotate(0deg)";
+
+        }
+
+    });
+
+}
