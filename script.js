@@ -4,13 +4,17 @@
 
 window.addEventListener("load", function () {
 
+    const loader = document.getElementById("loader");
+
+    if (!loader) return;
+
     setTimeout(function () {
 
-        document.getElementById("loader").style.opacity = "0";
+        loader.style.opacity = "0";
 
         setTimeout(function () {
 
-            document.getElementById("loader").style.display = "none";
+            loader.style.display = "none";
 
         }, 1000);
 
@@ -126,15 +130,23 @@ function openModal(index){
 
     const rect = clickedImage.getBoundingClientRect();
 
-    spinner.style.display="block";
+   if (spinner) {
 
-modalImage.style.opacity="0";
+    spinner.style.display = "block";
+
+}
+
+modalImage.style.opacity = "0";
 
 modalImage.src=clickedImage.src;
 
 modalImage.onload=()=>{
 
-    spinner.style.display="none";
+    if (spinner) {
+
+    spinner.style.display = "none";
+
+}
 
     modalImage.style.opacity="1";
 
@@ -204,23 +216,28 @@ galleryImages.forEach((image,index)=>{
 
 });
 
-nextBtn.addEventListener("click",(e)=>{
+if (nextBtn) {
 
-    e.stopPropagation();
+    nextBtn.addEventListener("click",(e)=>{
 
-    currentImage++;
+        e.stopPropagation();
 
-    if(currentImage>=galleryImages.length){
+        currentImage++;
 
-        currentImage=0;
+        if(currentImage>=galleryImages.length){
 
-    }
+            currentImage=0;
 
-    modalImage.src = galleryImages[currentImage].src;
+        }
 
-});
+        modalImage.src=galleryImages[currentImage].src;
 
-prevBtn.addEventListener("click",(e)=>{
+    });
+
+}
+
+if (prevBtn) {
+    prevBtn.addEventListener("click",(e)=>{
 
     e.stopPropagation();
 
@@ -235,67 +252,82 @@ prevBtn.addEventListener("click",(e)=>{
     modalImage.src = galleryImages[currentImage].src;
 
 });
+}
+if (closeModal) {
 
-closeModal.addEventListener("click",closeLightbox);
+    closeModal.addEventListener("click", closeLightbox);
 
-imageModal.addEventListener("click",(e)=>{
+}
 
-    if(e.target===imageModal){
+if (imageModal) {
+
+    imageModal.addEventListener("click", (e) => {
+
+        if (e.target === imageModal) {
+
+            closeLightbox();
+
+        }
+
+    });
+
+}
+
+document.addEventListener("keydown", (e) => {
+
+    if (!imageModal) return;
+
+    if (!imageModal.classList.contains("active")) return;
+
+    if (e.key === "Escape") {
 
         closeLightbox();
 
     }
 
-});
-
-document.addEventListener("keydown",(e)=>{
-
-    if(!imageModal.classList.contains("active")) return;
-
-    if(e.key==="Escape"){
-
-        closeLightbox();
-
-    }
-
-    if(e.key==="ArrowRight"){
+    if (e.key === "ArrowRight" && nextBtn) {
 
         nextBtn.click();
 
     }
 
-    if(e.key==="ArrowLeft"){
+    if (e.key === "ArrowLeft" && prevBtn) {
 
         prevBtn.click();
 
     }
 
 });
-let touchStartX=0;
 
-modalImage.addEventListener("touchstart",(e)=>{
+if (modalImage) {
 
-    touchStartX=e.touches[0].clientX;
+    let touchStartX = 0;
 
-});
+    modalImage.addEventListener("touchstart", (e) => {
 
-modalImage.addEventListener("touchend",(e)=>{
+        touchStartX = e.touches[0].clientX;
 
-    const touchEndX=e.changedTouches[0].clientX;
+    });
 
-    if(touchStartX-touchEndX>50){
+    modalImage.addEventListener("touchend", (e) => {
 
-        nextBtn.click();
+        const touchEndX = e.changedTouches[0].clientX;
 
-    }
+        if (touchStartX - touchEndX > 50) {
 
-    if(touchEndX-touchStartX>50){
+            if (nextBtn) nextBtn.click();
 
-        prevBtn.click();
+        }
 
-    }
+        if (touchEndX - touchStartX > 50) {
 
-});
+            if (prevBtn) prevBtn.click();
+
+        }
+
+    });
+
+}
 /*=========================================
         MOBILE MENU
 =========================================*/
@@ -333,6 +365,48 @@ menuToggle.style.transform="rotate(180deg)";
 menuToggle.style.transform="rotate(0deg)";
 
         }
+
+    });
+
+}
+/*=========================================
+        EMAILJS CONTACT FORM
+=========================================*/
+
+// Initialize EmailJS
+emailjs.init({
+    publicKey: "TGmjQ2I7YWrcF5Sh4",
+});
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+
+    contactForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "mrchai_service",
+            "template_l2ki7jp",
+            this
+        )
+
+        .then(function () {
+
+            alert("✅ Thank you! Your message has been sent successfully.");
+
+            contactForm.reset();
+
+        })
+
+        .catch(function (error) {
+
+            console.error(error);
+
+            alert("❌ Failed to send message. Please try again.");
+
+        });
 
     });
 
