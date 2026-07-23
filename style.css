@@ -300,6 +300,7 @@ nav ul li a:hover {
 
     box-shadow: 0 0 20px #D4AF37;
 }
+
 /*====================================================
                 6. SPECIAL CHAI SECTION
 ====================================================*/
@@ -320,58 +321,95 @@ nav ul li a:hover {
 
 /* Menu Container */
 
-.menu-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+.menu-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:stretch;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin-top:60px;
+
 }
 
 /* Menu Card */
 
-.menu-card {
-    width: 320px;
-    padding: 30px;
+.menu-card{
 
-    background: #1B1B1B;
-    border-radius: 20px;
+    width:320px;
 
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.40);
+    min-height:430px;
 
-    transition: 0.4s ease;
+    padding:25px;
+
+    background:#1D1D1D;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    transition:.4s ease;
+
+    box-shadow:0 0 15px rgba(0,0,0,.35);
+
 }
 
-.menu-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.50);
+.menu-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 0 25px rgba(212,175,55,.45);
+
 }
 
-.menu-card img {
-    width: 100%;
-    height: 220px;
+.menu-card img{
 
-    object-fit: cover;
-    border-radius: 15px;
+    width:100%;
 
-    margin-bottom: 20px;
+    height:220px;
 
-    transition: 0.4s ease;
+    object-fit:cover;
+
+    border-radius:15px;
+
+    transition:.35s ease;
+
 }
 
-.menu-card:hover img {
-    transform: scale(1.08);
+.menu-card img:hover{
+
+    transform:scale(1.05);
+
+}
+.menu-card h3{
+
+    color:#D4AF37;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
 }
 
-.menu-card h3 {
-    color: #D4AF37;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
+.menu-card p{
 
-.menu-card p {
-    color: #DDDDDD;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    color:#ffffff;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
 }
 
 .menu-card span {
@@ -419,26 +457,7 @@ nav ul li a:hover {
 
 /* Milkshake Container */
 
-.milkshake-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
 
-    margin-top: 60px;
-}
-
-/* Milkshake Card */
-
-.milkshake-card {
-    width: 330px;
-    padding: 25px;
-
-    background: #1D1D1D;
-    border-radius: 20px;
-
-    transition: 0.4s ease;
-}
 
 .milkshake-card:hover {
     transform: translateY(-10px);
@@ -512,26 +531,7 @@ nav ul li a:hover {
 
 /* Snack Container */
 
-.snack-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
 
-    margin-top: 60px;
-}
-
-/* Snack Card */
-
-.snack-card {
-    width: 330px;
-    padding: 25px;
-
-    background: #1D1D1D;
-    border-radius: 20px;
-
-    transition: 0.4s ease;
-}
 
 .snack-card:hover {
     transform: translateY(-10px);
