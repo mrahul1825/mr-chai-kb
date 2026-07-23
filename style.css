@@ -302,7 +302,7 @@ nav ul li a:hover {
 }
 
 /*====================================================
-                6. SPECIAL CHAI SECTION
+                6. OUR SPECIALS SECTION
 ====================================================*/
 
 .menu {
@@ -319,37 +319,29 @@ nav ul li a:hover {
     margin-bottom: 60px;
 }
 
-/* Menu Container */
+/* Cards Container */
 
 .menu-container{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:stretch;
-
-    gap:40px;
-
-    flex-wrap:wrap;
-
-    margin-top:60px;
-
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
 }
 
-/* Menu Card */
+/* Card */
 
 .menu-card{
 
     width:320px;
 
-    min-height:430px;
-
-    padding:25px;
+    height:430px;
 
     background:#1D1D1D;
 
     border-radius:20px;
+
+    padding:25px;
 
     text-align:center;
 
@@ -359,9 +351,9 @@ nav ul li a:hover {
 
     justify-content:space-between;
 
-    transition:.4s ease;
-
     box-shadow:0 0 15px rgba(0,0,0,.35);
+
+    transition:.4s ease;
 
 }
 
@@ -370,6 +362,32 @@ nav ul li a:hover {
     transform:translateY(-10px);
 
     box-shadow:0 0 25px rgba(212,175,55,.45);
+
+}
+
+
+
+.menu-card h3{
+
+    color:#D4AF37;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+.menu-card p{
+
+    color:#DDDDDD;
+
+    font-size:18px;
+
+    line-height:1.6;
+
+    min-height:60px;
+
+    margin-bottom:20px;
 
 }
 
@@ -383,7 +401,7 @@ nav ul li a:hover {
 
     border-radius:15px;
 
-    transition:.35s ease;
+    display:block;
 
 }
 
@@ -392,59 +410,31 @@ nav ul li a:hover {
     transform:scale(1.05);
 
 }
-.menu-card h3{
 
-    color:#D4AF37;
+.menu-card a{
 
-    font-size:32px;
+    display:block;
 
-    margin-bottom:15px;
+}
+@media(max-width:1100px){
+
+    .menu-container{
+
+        grid-template-columns:repeat(2,320px);
+
+    }
 
 }
 
-.menu-card p{
+@media(max-width:700px){
 
-    color:#ffffff;
+    .menu-container{
 
-    line-height:1.6;
+        grid-template-columns:320px;
 
-    margin-bottom:20px;
+    }
 
 }
-
-.menu-card span {
-    display: block;
-
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-
-    margin-bottom: 25px;
-}
-
-/* Menu Button */
-
-.menu-btn {
-    display: inline-block;
-
-    padding: 12px 30px;
-
-    background: #D4AF37;
-    color: black;
-
-    text-decoration: none;
-    font-weight: bold;
-
-    border-radius: 30px;
-
-    transition: 0.3s ease;
-}
-
-.menu-btn:hover {
-    background: white;
-}
-
-
 /*====================================================
                 7. MILKSHAKES SECTION
 ====================================================*/
