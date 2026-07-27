@@ -411,3 +411,61 @@ if (contactForm) {
     });
 
 }
+/*=========================================
+        MENU CATEGORY FILTER
+=========================================*/
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    if (!window.location.pathname.endsWith("menu.html")) return;
+
+    const params = new URLSearchParams(window.location.search);
+
+    const category = params.get("category");
+
+    const hero = document.getElementById("menuHero");
+
+    const tea = document.getElementById("tea");
+
+    const milk = document.getElementById("milkshakes");
+
+    const snacks = document.getElementById("snacks");
+
+    if(!category){
+
+        return;
+
+    }
+
+    if(hero){
+
+        hero.classList.add("hidden-category");
+
+    }
+
+    tea.classList.remove("hidden-category");
+    milk.classList.remove("hidden-category");
+    snacks.classList.remove("hidden-category");
+
+    if(category==="tea"){
+
+        milk.classList.add("hidden-category");
+        snacks.classList.add("hidden-category");
+
+    }
+
+    if(category==="milkshakes"){
+
+        tea.classList.add("hidden-category");
+        snacks.classList.add("hidden-category");
+
+    }
+
+    if(category==="snacks"){
+
+        tea.classList.add("hidden-category");
+        milk.classList.add("hidden-category");
+
+    }
+
+});
